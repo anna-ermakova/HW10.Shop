@@ -3,20 +3,21 @@ package sky.pro.hw10.shop.models;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 @SessionScope
 public class Basket {
-    private final List<Integer> basket = new ArrayList<>();
+    private final Set<Integer> ids = new HashSet<>();
 
-    public void addAll(List<Integer> values) {
-        basket.addAll(values);
+    public void addAll(Set<Integer> id) {
+        ids.addAll(id);
     }
 
-    public List<Integer> getAll() {
-        return basket;
+    public Set<Integer> getAll() {
+        return Collections.unmodifiableSet(ids);
     }
 
 }
